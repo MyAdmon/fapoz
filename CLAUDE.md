@@ -9,7 +9,7 @@ Hoy: **fase 1 = menú público por QR** (menú del día + carta), en producción
 ## Reglas
 
 - **Push a `main` = producción** para el cliente (GitHub Pages, ~1 min). Verificar antes de hacer push.
-- **Repo público** (JeanCarlosT/FAPOZ): nunca secretos, tokens ni datos personales. Commits con la identidad local del repo (email noreply de GitHub); no cambiarla.
+- **Repo público** (MyAdmon/fapoz): nunca secretos, tokens ni datos personales. Commits con la identidad local del repo (email noreply de GitHub); no cambiarla.
 - Sitio estático: HTML + ES modules + CSS. Sin build, sin npm, sin framework. Dependencias solo por CDN con versión exacta (papaparse 5.4.1, qrcode-generator 1.4.4).
 - **Datos solo por `shared/js/catalog.js`**. Las vistas (`menu/`) nunca importan `sheets.js` ni `cache.js`. Cuando llegue la base de datos del POS, se cambia `catalog.js`, no las vistas.
 - Dominio puro (`products.js`, `daily-menu.js`): sin DOM ni red, probado con `node --test`. Si cambia cómo se interpreta una hoja, se actualiza `tests/dominio.test.mjs`.
@@ -29,7 +29,7 @@ Hoy: **fase 1 = menú público por QR** (menú del día + carta), en producción
 
 - Servidor local (desde la raíz): `python3 -m http.server 8000` → `http://localhost:8000/<slug>/`
 - Tests: `node --test`
-- Estado del deploy: `gh api repos/JeanCarlosT/FAPOZ/pages/builds/latest --jq .status`
+- Estado del deploy: `gh api repos/MyAdmon/fapoz/pages/builds/latest --jq .status`
 
 ## Verificación visual
 

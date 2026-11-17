@@ -5,7 +5,7 @@ Plataforma de marca blanca para restaurantes. Meta: un **POS completo** (ventas,
 
 Restaurante piloto: **La Avenida** (el código no depende de ese nombre; cada restaurante es una carpeta).
 
-- En vivo: https://jeancarlost.github.io/FAPOZ/la-avenida/
+- En vivo: https://myadmon.github.io/fapoz/la-avenida/
 - QR imprimible (10 × 15 cm): [`la-avenida/qr-la-avenida.pdf`](la-avenida/qr-la-avenida.pdf)
 
 ## Estructura
@@ -51,7 +51,7 @@ node --test
 
 - [ ] Crear el Google Sheet de La Avenida, compartirlo con el dueño y pegar las URLs ([docs/hojas.md](docs/hojas.md)).
 - [ ] Confirmar con el cliente: precio de *Nachos con guacamole* (no tiene en el PDF) y "Carne de 270 g" en *Costilla BBQ* y *Pechuga* (la nota dice que solo churrasco, punta, solomito y cañón son 270 g).
-- [ ] **Dominio propio antes de imprimir acrílicos**: el QR apunta a `jeancarlost.github.io`; si un día cambia el hosting, los QR impresos se rompen. Con dominio propio, se cambia `url` en `config.js` y se regenera el QR.
+- [ ] **Dominio propio antes de imprimir acrílicos**: el QR apunta a `myadmon.github.io`; si un día cambia el hosting, los QR impresos se rompen. Con dominio propio, se cambia `url` en `config.js` y se regenera el QR.
 - [ ] Imprimir QR.
 
 ## Roadmap POS

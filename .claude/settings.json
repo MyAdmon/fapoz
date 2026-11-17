@@ -7,7 +7,7 @@
       "Bash(node --test *)",
       "Bash(node --check *)",
       "Bash(python3 -m http.server *)",
-      "Bash(gh api repos/JeanCarlosT/FAPOZ/pages/builds/latest *)"
+      "Bash(gh api repos/MyAdmon/fapoz/pages/builds/latest *)"
     ]
   }
 }

@@ -3,7 +3,7 @@
 export default {
   nombre: "La Avenida",
   // URL pública = la que va en el QR. Si cambia el dominio, cambia aquí y se regenera el QR.
-  url: "https://jeancarlost.github.io/FAPOZ/la-avenida/",
+  url: "https://myadmon.github.io/fapoz/la-avenida/",
   logo: "./logo.jpg",
 
   textoIzquierda: ["Buena", "Comida", "Buenas", "Historias"],
