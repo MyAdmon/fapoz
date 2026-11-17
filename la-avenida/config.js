@@ -15,10 +15,10 @@ export default {
   moneda: "COP",
   locale: "es-CO",
 
-  // 👉 Cuando exista el Google Sheet, reemplaza cada una por la URL CSV publicada
-  //    de su pestaña (docs/hojas.md). Mientras tanto se leen los CSV de esta carpeta.
+  // Google Sheet "La Avenida – Menú", cada pestaña publicada como CSV (docs/hojas.md).
+  // carta.csv y menu-del-dia.csv de esta carpeta quedan solo como plantilla inicial.
   hojas: {
-    menuDelDia: "./menu-del-dia.csv",
-    carta: "./carta.csv",
+    menuDelDia: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQF1AMtXhOEnwm0a8mOoe33wLI2GFKZwLSdDy6a0bBzRSP24tMgDehOlki3Po13cTz27F_2EkfPqDlW/pub?gid=658244081&single=true&output=csv",
+    carta: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQF1AMtXhOEnwm0a8mOoe33wLI2GFKZwLSdDy6a0bBzRSP24tMgDehOlki3Po13cTz27F_2EkfPqDlW/pub?gid=0&single=true&output=csv",
   },
 };

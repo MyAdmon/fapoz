@@ -6,10 +6,12 @@ Mientras el Sheet no exista, la página lee los CSV de la carpeta del restaurant
 
 ## Montarlo (una vez por restaurante, ~10 min)
 
-1. En Google Drive: **Nuevo → Hojas de cálculo**. Nómbrala `<Restaurante> – Menú`.
-2. **Archivo → Importar → Subir** `<restaurante>/carta.csv` → *Insertar hojas nuevas*. Renombra la pestaña a `carta`.
-3. Igual con `<restaurante>/menu-del-dia.csv` → pestaña `menu_del_dia`.
-4. Borra la pestaña vacía `Hoja 1`. Inmoviliza la fila 1 en ambas (**Ver → Inmovilizar → 1 fila**).
+1. Abre https://sheets.new y nómbrala `<Restaurante> – Menú`.
+2. Renombra `Hoja 1` a `carta`. En **A1**: `=IMPORTDATA("https://myadmon.github.io/fapoz/<restaurante>/carta.csv")`.
+   Cuando carguen los datos: **Cmd+A → Cmd+C → Cmd+Shift+V** (pegar solo valores). A1 debe quedar como `id`, no como fórmula.
+3. Nueva pestaña `menu_del_dia`, igual con `.../<restaurante>/menu-del-dia.csv`.
+   (Requiere que los CSV de la carpeta ya estén publicados con `git push`.)
+4. Inmoviliza la fila 1 en ambas (**Ver → Inmovilizar → 1 fila**). Opcional: en `carta`, columna `disponible` → **Insertar → Menú desplegable** con `sí` / `no`.
 5. **Compartir** → agrega el correo del dueño como **Editor**.
 6. **Archivo → Compartir → Publicar en la web** → pestaña *Vincular*:
    elige `carta` + **Valores separados por comas (.csv)** → **Publicar** → copia la URL.
