@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR del menú</title>
+  <link rel="stylesheet" href="./menu.css" />
+  <style>
+    /* Tarjeta 10 × 15 cm (acrílico de mesa). Imprimir o "Guardar como PDF" sin márgenes. */
+    @page { size: 100mm 150mm; margin: 0; }
+    body { display: grid; place-items: center; min-height: 100vh; }
+    .qr-card {
+      width: 100mm; height: 150mm; padding: 9mm 8mm;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5mm;
+      background: var(--bg); color: #fff; text-align: center;
+      border: 1.2mm solid var(--gold-deep);
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .qr-card .brand { width: 52mm; }
+    .qr-card__code { width: 64mm; background: #fff; border-radius: 3mm; }
+    .qr-card__code svg { width: 100%; height: auto; }
+    .qr-card__cta { font-family: var(--slab); font-size: 5mm; line-height: 1.2; color: var(--gold-bright); text-transform: uppercase; }
+    .qr-card__cta small { display: block; margin-top: 2mm; font-family: var(--serif); font-weight: 700; font-size: 3.4mm; color: #fff; text-transform: none; }
+    .qr-card__url { font-size: 2.5mm; color: #a8a29e; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <main id="qr" class="qr-card"><p>Cargando…</p></main>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+  <script type="module">
+    // Uso: menu/qr.html?r=<carpeta-del-restaurante>   (ej. ?r=la-avenida)
+    // El QR codifica config.url del restaurante (no la URL de esta página).
+    import { escapeHtml as esc } from "../shared/js/format.js";
+
+    const slug = new URLSearchParams(location.search).get("r") || "";
+    const el = document.getElementById("qr");
+
+    if (!/^[a-z0-9-]+$/.test(slug)) {
+      el.textContent = "Falta ?r=<carpeta-del-restaurante>. Ej: qr.html?r=la-avenida";
+    } else {
+      const base = new URL(`../${slug}/`, location.href);
+      const { default: c } = await import(new URL("config.js", base).href);
+      const qr = qrcode(0, "Q"); // corrección Q: aguanta rayones y reflejos del acrílico
+      qr.addData(c.url);
+      qr.make();
+      el.innerHTML = `
+        ${c.logo
+          ? `<img class="brand" src="${esc(new URL(c.logo, base).href)}" alt="${esc(c.nombre)}">`
+          : `<p class="brand brand--text">${esc(c.nombre)}</p>`}
+        <div class="qr-card__code">${qr.createSvgTag({ cellSize: 4, scalable: true, alt: `QR del menú de ${c.nombre}` })}</div>
+        <p class="qr-card__cta">Escanea y mira<br>nuestro menú<small>Menú del día · Carta · Domicilios</small></p>
+        <p class="qr-card__url">${esc(c.url)}</p>`;
+    }
+  </script>
+</body>
+</html>

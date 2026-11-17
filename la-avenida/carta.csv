@@ -1,0 +1,16 @@
+id,categoria,nombre,descripcion,precio,disponible,categoria_nota
+ent-01,ENTRADAS,Nachos con guacamole y pico de gallo,Nachos crocantes acompañados de guacamole y pico de gallo.,,sí,
+pic-01,PARA PICAR,Salchipapa,"Papas a la francesa, salchicha, queso y tocineta + salsa al gusto",14000,sí,
+pic-02,PARA PICAR,Salchipollo,"Papas a la francesa, queso, salchicha y pollo",18000,sí,
+pic-03,PARA PICAR,Picada personal,"Monedas de plátano, papas a la francesa, cascos de tomate, arepa frita, chicharrón, chorizo y carne de res.",20000,sí,
+pic-04,PARA PICAR,Picada para 2,"Monedas de plátano, papas a la francesa, cascos de tomate, arepa frita, chicharrón, chorizo y carne de res.",36000,sí,
+pla-01,PLATOS,Arroz salteado con verduras,Incluye 1/4 de pollo asado,16000,sí,
+pla-02,PLATOS,Cazuela paisa,,25000,sí,
+pla-03,PLATOS,Cachama bañada en salsa de camarón,"Acompañada de patacones, arroz de coco y ensalada.",50000,sí,
+asa-01,ASADOS AL CARBÓN,Churrasco,Carne de 270 g,32000,sí,"CHURRASCO, PUNTA DE ANCA, SOLOMITO Y CAÑÓN: 270 g; Acompañantes: papas · papas a la francesa · patacón · ensalada"
+asa-02,ASADOS AL CARBÓN,Punta de anca,Carne de 270 g,32000,sí,
+asa-03,ASADOS AL CARBÓN,Solomito,Carne de 270 g,32000,sí,
+asa-04,ASADOS AL CARBÓN,Cañón de cerdo,Carne de 270 g,28000,sí,
+asa-05,ASADOS AL CARBÓN,Costilla BBQ,Carne de 270 g,26000,sí,
+asa-06,ASADOS AL CARBÓN,Pechuga a la plancha,Carne de 270 g,26000,sí,
+asa-07,ASADOS AL CARBÓN,Chorizo con arepa,Incluye los mismos acompañantes de las carnes,10000,sí,

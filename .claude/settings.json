@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(node --test *)",
+      "Bash(node --check *)",
+      "Bash(python3 -m http.server *)",
+      "Bash(gh api repos/JeanCarlosT/FAPOZ/pages/builds/latest *)"
+    ]
+  }
+}

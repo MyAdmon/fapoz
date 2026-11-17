@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0d0d0d" />
-  <title>La Avenida · Menú del Día</title>
-  <meta name="description" content="Menú del día - La Avenida, Asadero y Restaurante" />
-  <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="stylesheet" href="./menu.css" />
+  <meta name="theme-color" content="#090909" />
+  <title>La Avenida · Menú del día y Carta</title>
+  <meta name="description" content="La Avenida, Asadero y Restaurante. Asados al carbón. Menú del día, carta y domicilios." />
+  <meta property="og:title" content="La Avenida · Menú del día y Carta" />
+  <meta property="og:description" content="Asados al carbón. Mira el menú de hoy y pide a domicilio." />
+  <meta property="og:image" content="https://jeancarlost.github.io/FAPOZ/la-avenida/logo.jpg" />
+  <link rel="icon" href="./logo.jpg" />
+  <link rel="apple-touch-icon" href="./logo.jpg" />
+  <link rel="stylesheet" href="../menu/menu.css" />
 </head>
 <body>
   <div id="app"></div>
-  <script type="module" src="./menu.js"></script>
+  <script type="module">
+    import config from "./config.js";
+    import { start } from "../menu/app.js";
+    start(config);
+  </script>
 </body>
 </html>

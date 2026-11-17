@@ -1,39 +1,28 @@
 // ============================================================
-// REPOSITORIO DE CATÁLOGO — punto ÚNICO de acceso a los productos.
-// El menú (y mañana el POS) NO saben de dónde vienen los datos:
-// solo llaman a getProducts(). Cuando exista backend de escritura,
-// se cambia SOLO este archivo. Nada más.
+// REPOSITORIO — punto ÚNICO de acceso a los datos del restaurante.
+// Hoy: hojas CSV (Google Sheets publicado o .csv del repo).
+// Mañana (POS): API / base de datos. Se cambia SOLO este archivo; las vistas no se tocan.
 // ============================================================
 
-import { SITE } from "../config.js";
 import { fetchSheetRows } from "./sheets.js";
-import { toProductList, filterAvailable } from "./products.js";
-import { readCache, writeCache, clearCache } from "./cache.js";
+import { toProductList } from "./products.js";
+import { toDailyMenu } from "./daily-menu.js";
+import { readCache, writeCache } from "./cache.js";
 
-const CACHE_KEY = "fapoz:catalog:v1";
+export const getCarta = (url) => load(url, toProductList);
+export const getMenuDelDia = (url) => load(url, toDailyMenu);
 
-export async function getProducts({
-  force = false,
-  ttl = SITE.dataSource.cacheTTL,
-  onlyAvailable = false,
-} = {}) {
-  let products = force ? null : readCache(CACHE_KEY, ttl);
-
-  if (!products) {
-    try {
-      const rows = await fetchSheetRows(SITE.dataSource.csvUrl);
-      products = toProductList(rows);
-      writeCache(CACHE_KEY, products);
-    } catch (error) {
-      // Sin red: mostrar el último catálogo conocido aunque esté vencido.
-      products = readCache(CACHE_KEY, 0);
-      if (!products) throw error;
-    }
+// Red primero: lo que el dueño edita se ve al recargar. Sin red: último dato bueno.
+async function load(url, parse) {
+  const key = `fapoz:${new URL(url || "", location.href).href}`;
+  try {
+    const data = parse(await fetchSheetRows(url));
+    writeCache(key, data);
+    return data;
+  } catch (error) {
+    const cached = readCache(key);
+    if (cached === undefined) throw error;
+    console.warn("[catalog] sin red, uso el último dato guardado:", error);
+    return cached;
   }
-
-  return onlyAvailable ? filterAvailable(products) : products;
-}
-
-export function invalidateCatalog() {
-  clearCache(CACHE_KEY);
 }
