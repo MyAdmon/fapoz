@@ -1,0 +1,111 @@
+:root { --toolbar-h: 57px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(160deg, var(--color-brand), var(--color-brand-strong));
+  color: var(--color-text-inverse);
+  padding: var(--sp-6) 0 var(--sp-5);
+}
+.hero__inner { display: flex; align-items: center; gap: var(--sp-4); }
+.hero__logo { width: 56px; height: 56px; border-radius: var(--radius-md); flex: 0 0 auto; }
+.hero__name { font-family: var(--font-display); font-size: var(--fs-3xl); letter-spacing: -.01em; }
+.hero__slogan { font-size: var(--fs-sm); opacity: .85; margin-top: 2px; }
+.hero__slogan:empty { display: none; }
+
+/* ---------- Toolbar ---------- */
+.toolbar {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--color-bg);
+  background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  backdrop-filter: saturate(1.4) blur(12px);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+.toolbar__inner { display: flex; gap: var(--sp-3); align-items: center; padding-block: var(--sp-2); min-height: var(--toolbar-h); }
+.search { position: relative; flex: 1 1 auto; }
+.search__icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--color-text-muted); pointer-events: none; }
+.search__input {
+  width: 100%; padding: 10px 14px 10px 38px;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-full); outline: none;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.search__input:focus { border-color: var(--color-brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand) 18%, transparent); }
+.search__input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+/* ---------- Nav categorías ---------- */
+.catnav {
+  position: sticky; top: var(--toolbar-h); z-index: 15;
+  display: flex; gap: var(--sp-2); overflow-x: auto;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--color-bg); border-bottom: 1px solid var(--color-border);
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.catnav:empty { display: none; }
+.catnav::-webkit-scrollbar { display: none; }
+.chip {
+  flex: 0 0 auto; padding: 8px 16px; border-radius: var(--radius-full);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  font-size: var(--fs-sm); font-weight: 500; color: var(--color-text-muted); white-space: nowrap;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.chip:hover { color: var(--color-text); }
+.chip.is-active { background: var(--color-brand); border-color: var(--color-brand); color: var(--color-text-inverse); }
+
+/* ---------- Secciones ---------- */
+.cat { padding-top: var(--sp-6); scroll-margin-top: calc(var(--toolbar-h) + 64px); }
+.cat__title { font-family: var(--font-display); font-size: var(--fs-2xl); margin-bottom: var(--sp-4); }
+.cat__grid { display: grid; gap: var(--sp-3); }
+@media (min-width: 640px) { .cat__grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- Tarjeta ---------- */
+.card {
+  display: grid; grid-template-columns: 88px 1fr; gap: var(--sp-3);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); padding: var(--sp-3); box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.card.is-disabled { opacity: .5; filter: grayscale(.7); }
+.card__img { width: 88px; height: 88px; object-fit: cover; border-radius: var(--radius-sm); background: var(--color-surface-2); }
+.card__img--ph { background: var(--color-surface-2); }
+.card__body { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.card__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3); }
+.card__name { font-size: var(--fs-lg); font-weight: 600; }
+.card__desc { font-size: var(--fs-sm); color: var(--color-text-muted); }
+.card__price { flex: 0 0 auto; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.price--old { color: var(--color-text-muted); font-weight: 400; font-size: var(--fs-sm); text-decoration: line-through; margin-right: 6px; }
+.price--promo { color: var(--color-promo); }
+.card__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.tag { font-size: var(--fs-xs); font-weight: 500; padding: 3px 10px; border-radius: var(--radius-full); background: var(--color-brand-soft); color: var(--color-brand-strong); }
+.tag--vegano, .tag--vegetariano { background: #ecfdf5; color: #047857; }
+.tag--picante { background: #fef2f2; color: #b91c1c; }
+.tag--sin-gluten { background: #eff6ff; color: #1d4ed8; }
+.tag--nuevo, .tag--popular { background: #fef9c3; color: #854d0e; }
+.card__allergens { font-size: var(--fs-xs); color: var(--color-text-muted); margin-top: 2px; }
+
+/* ---------- Estados ---------- */
+.state { text-align: center; padding: var(--sp-7) var(--sp-4); color: var(--color-text-muted); }
+.state__title { font-family: var(--font-display); font-size: var(--fs-xl); color: var(--color-text); margin-bottom: var(--sp-2); }
+.state__actions { margin-top: var(--sp-4); }
+
+/* ---------- Skeleton ---------- */
+.skeleton { padding-top: var(--sp-6); display: grid; gap: var(--sp-3); }
+.skeleton__title { height: 28px; width: 40%; border-radius: var(--radius-sm); }
+.skeleton__card { height: 112px; border-radius: var(--radius-md); }
+.skeleton__title, .skeleton__card { background: var(--color-surface-2); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+
+/* ---------- Footer ---------- */
+.footer { margin-top: var(--sp-7); padding: var(--sp-6) 0 calc(var(--sp-6) + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-muted); font-size: var(--fs-sm); }
+.footer__powered { margin-top: var(--sp-1); font-size: var(--fs-xs); opacity: .7; }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px);
+  background: var(--color-text); color: #fff; padding: 10px 18px; border-radius: var(--radius-full);
+  font-size: var(--fs-sm); box-shadow: var(--shadow-lg); z-index: 50;
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }

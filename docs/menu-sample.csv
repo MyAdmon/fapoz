@@ -1,0 +1,14 @@
+id,categoria,categoria_orden,nombre,descripcion,precio,precio_promocional,disponible,imagen_url,etiquetas,alergenos,orden,nombre_en,descripcion_en
+ent-01,Entradas,1,Empanadas de carne,"Tres empanadas criollas de carne y papa",12000,,TRUE,,frito;criollo,gluten,1,Beef empanadas,"Three criollo beef empanadas"
+ent-02,Entradas,1,Patacones con hogao,Patacones crocantes con hogao casero,14000,,TRUE,,frito;vegano,,2,Patacones with hogao,Crispy plantains with house hogao
+ent-03,Entradas,1,Ceviche de camarón,Camarón fresco en leche de tigre,22000,19000,TRUE,,del-mar;nuevo,mariscos,3,Shrimp ceviche,Fresh shrimp in leche de tigre
+pf-01,Platos Fuertes,2,Hamburguesa Fapoz,"Carne 150g, queso cheddar, tocineta y papas",28000,,TRUE,,popular,gluten;lacteos,1,Fapoz Burger,"150g beef, cheddar, bacon and fries"
+pf-02,Platos Fuertes,2,Bandeja paisa,"Fríjoles, chicharrón, carne, huevo y arepa",32000,,TRUE,,típico,,2,Paisa platter,"Beans, pork belly, beef, egg and arepa"
+pf-03,Platos Fuertes,2,Salmón a la plancha,Con vegetales al vapor y puré,38000,,TRUE,,del-mar;sin-gluten,pescado,3,Grilled salmon,"With steamed veggies and mash"
+pf-04,Platos Fuertes,2,Bowl vegano,"Quinoa, garbanzo, aguacate y vegetales",24000,,TRUE,,vegano,frutos-secos,4,Vegan bowl,"Quinoa, chickpeas, avocado and veggies"
+post-01,Postres,3,Tres leches,Clásico bizcocho bañado en tres leches,12000,,TRUE,,,lacteos;gluten,3,Milk cake,Classic three-milk cake
+post-02,Postres,3,Brownie con helado,Brownie tibio con helado de vainilla,14000,11000,TRUE,,chocolate;lacteos,gluten,1,Brownie with ice cream,Warm brownie with vanilla ice cream
+beb-01,Bebidas,4,Limonada de coco,Limonada cremosa con leche de coco,9000,,TRUE,,,,2,Coconut lemonade,Creamy lemonade with coconut milk
+beb-02,Bebidas,4,Café espresso,Espresso doble,5000,,TRUE,,,,1,Espresso,Double espresso
+beb-03,Bebidas,4,Cerveza artesanal,IPA de la casa 330ml,12000,,FALSE,,,gluten,3,Craft beer,House IPA 330ml
+beb-04,Bebidas,4,Agua de panela,Con limón,6000,,TRUE,,,,4,Panela water,With lemon

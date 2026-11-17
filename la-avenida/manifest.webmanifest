@@ -1,0 +1,14 @@
+{
+  "name": "La Avenida · Menú del Día",
+  "short_name": "La Avenida",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
+  "lang": "es",
+  "icons": [
+    { "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='28' fill='%230d0d0d'/><text x='64' y='92' text-anchor='middle' font-size='80'>🥩</text></svg>", "sizes": "128x128", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

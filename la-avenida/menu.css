@@ -1,0 +1,489 @@
+/* =========================================================================
+   LA AVENIDA — Menú del Día
+   Recreación fiel: tema oscuro rústico, paleta dorada, ornamentos
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bitter:wght@400;600;700;800;900&family=Playfair+Display:wght@800;900&family=Yellowtail&display=swap');
+
+:root {
+  --bg:          #000000;
+  --gold:        #F5B700;
+  --gold-bright: #FFD233;
+  --gold-deep:   #B8860B;
+  --gold-dark:   #6b5310;
+  --white:       #ffffff;
+  --text:        #f2f2f2;
+  --red:         #C0392B;
+  --green:       #25D366;
+  --script: 'Yellowtail', cursive;
+  --slab:   'Alfa Slab One', Georgia, serif;
+  --serif:  'Bitter', Georgia, serif;
+  --display:'Playfair Display', Georgia, serif;
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem;
+  --sp-4:1rem;   --sp-5:1.5rem; --sp-6:2rem; --sp-7:3rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: var(--gold); text-decoration: none; }
+
+/* =========================================================================
+   POSTER — contenedor con marco decorativo
+   ========================================================================= */
+.poster {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 34px 22px 46px;
+  background: var(--bg);
+  z-index: 1;
+}
+
+/* Marco exterior fino */
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 2px solid var(--gold-dark);
+  border-radius: 16px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Marco interior dorado doble */
+.poster::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 3px solid var(--gold-deep);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 5px var(--bg), inset 0 0 0 6px var(--gold-dark);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =========================================================================
+   MANTEL A CUADROS (esquinas)
+   ========================================================================= */
+.cloth {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  z-index: 0;
+  opacity: .85;
+  border-radius: 6px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloth--tl { top: 8px; left: 8px; transform: rotate(45deg); border-radius: 10px; }
+.cloth--br { bottom: 8px; right: 8px; transform: rotate(45deg); border-radius: 10px; }
+
+.cloth__pattern {
+  width: 100%; height: 100%;
+  background-color: #f5f0e8;
+  background-image:
+    linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%),
+    linear-gradient(45deg, var(--red) 25%, transparent 25%, transparent 75%, var(--red) 75%);
+  background-size: 22px 22px;
+  background-position: 0 0, 11px 11px;
+}
+
+/* =========================================================================
+   DECORACIONES VEGETALES (laterales, desktop)
+   ========================================================================= */
+.veg {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .55;
+  display: none;
+}
+@media (min-width: 700px) {
+  .veg { display: block; }
+  .veg--left  { left: max(calc((100vw - 560px)/2 - 110px), 6px); top: 40%; }
+  .veg--right { right: max(calc((100vw - 560px)/2 - 110px), 6px); top: 30%; }
+}
+
+/* =========================================================================
+   HEADER
+   ========================================================================= */
+.top {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 4px;
+  padding: 8px 0 4px;
+}
+
+.script {
+  font-family: var(--script);
+  font-size: 1.15rem;
+  line-height: 1.05;
+  color: var(--gold-bright);
+  text-shadow: 0 1px 2px #000, 0 0 1px #000;
+  transform: rotate(-2deg);
+  white-space: normal;
+}
+
+.script--left  { text-align: left;  justify-self: start; }
+.script--right { text-align: right; justify-self: end; transform: rotate(2deg); }
+
+/* --- Emblema central --- */
+.emblem {
+  position: relative;
+  width: 200px;
+  max-width: 46vw;
+  justify-self: center;
+  text-align: center;
+}
+
+.emblem__art {
+  width: 100%;
+  display: block;
+}
+
+.emblem__text {
+  position: absolute;
+  left: 0; right: 0;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.emblem__name {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: clamp(1.05rem, 4.4vw, 1.4rem);
+  letter-spacing: .02em;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 1.5px 1.5px 0 #000, -1px -1px 0 #3a2c05, 0 0 6px rgba(0,0,0,.9);
+}
+
+.emblem__sub {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(.5rem, 2.2vw, .62rem);
+  color: #f0e6cc;
+  margin-top: 3px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.emblem__tag {
+  position: absolute;
+  left: 0; right: 0;
+  top: 71%;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(.42rem, 1.9vw, .56rem);
+  letter-spacing: .12em;
+  color: var(--gold-bright);
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* =========================================================================
+   TÍTULO "MENÚ DEL DÍA"
+   ========================================================================= */
+.title {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-top: 10px;
+  padding: 4px 0 6px;
+}
+
+.title__word {
+  font-family: var(--slab);
+  line-height: .92;
+  text-transform: uppercase;
+}
+
+.title__menu {
+  display: block;
+  font-size: clamp(3rem, 15vw, 4.4rem);
+  color: #fff;
+  text-shadow: 3px 3px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 6px 14px rgba(0,0,0,.8);
+}
+
+.title__day {
+  display: block;
+  font-size: clamp(2.4rem, 12vw, 3.5rem);
+  color: var(--gold-bright);
+  text-shadow: 3px 3px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+  margin-top: -6px;
+}
+
+/* Flourishes laterales */
+.title__flourish {
+  position: absolute;
+  top: 34%;
+  width: 54px;
+  height: auto;
+  opacity: .95;
+}
+.title__flourish--l { left: -6px; }
+.title__flourish--r { right: -6px; transform: scaleX(-1); }
+@media (max-width: 400px) { .title__flourish { width: 40px; } }
+
+/* =========================================================================
+   LISTA DEL MENÚ
+   ========================================================================= */
+.menu-list {
+  position: relative;
+  z-index: 3;
+  padding: 6px 0 4px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 66px 3px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 2px;
+}
+
+.row__icon {
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+}
+.row__icon svg { width: 100%; height: 100%; }
+
+.row__bar {
+  align-self: stretch;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--gold-deep), var(--gold), var(--gold-bright), var(--gold), var(--gold-deep));
+  border-radius: 3px;
+  min-height: 52px;
+}
+
+.row__body { min-width: 0; }
+
+.row__cat {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: clamp(1.15rem, 5vw, 1.5rem);
+  line-height: 1.1;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-shadow: 1.5px 1.5px 0 #000;
+}
+
+.row__desc {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(.92rem, 3.9vw, 1.1rem);
+  line-height: 1.25;
+  color: #fff;
+  margin-top: 1px;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.row__sub {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(.92rem, 3.9vw, 1.1rem);
+  color: #fff;
+  margin-top: 1px;
+}
+
+.row__list { list-style: none; margin-top: 2px; }
+
+.row__list li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(.98rem, 4.1vw, 1.18rem);
+  color: #fff;
+  line-height: 1.3;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.row__list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .42em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--gold-bright), var(--gold-deep));
+}
+
+
+/* =========================================================================
+   BANNER DE PRECIO (cinta)
+   ========================================================================= */
+.price-wrap {
+  position: relative;
+  z-index: 3;
+  padding: 16px 0 6px;
+}
+
+.price-ribbon {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+  padding: 4px;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold) 45%, var(--gold-deep));
+  clip-path: polygon(0 50%, 7% 0, 93% 0, 100% 50%, 93% 100%, 7% 100%);
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.7));
+}
+
+.price-ribbon__inner {
+  background: #0a0a0a;
+  clip-path: polygon(0 50%, 6% 0, 94% 0, 100% 50%, 94% 100%, 6% 100%);
+  padding: 10px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.price-ribbon__icon { width: 46px; height: 46px; flex: 0 0 auto; }
+
+.price-ribbon__label {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: clamp(1.2rem, 5.5vw, 1.6rem);
+  color: var(--gold-bright);
+  text-shadow: 1.5px 1.5px 0 #000;
+}
+
+.price-ribbon__value {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: clamp(1.7rem, 8.5vw, 2.5rem);
+  color: #fff;
+  line-height: 1;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+/* =========================================================================
+   FOOTER (caja con borde dorado)
+   ========================================================================= */
+.info-wrap {
+  position: relative;
+  z-index: 3;
+  padding: 16px 0 8px;
+}
+
+.info-box {
+  border: 2.5px solid var(--gold);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 4px #000, inset 0 0 0 5.5px var(--gold-deep);
+  background: #060606;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.info-item svg { width: 34px; height: 34px; flex: 0 0 auto; }
+
+.info-item__text {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(.82rem, 3.6vw, 1rem);
+  color: #fff;
+  line-height: 1.15;
+  text-shadow: 1px 1px 0 #000;
+}
+
+.info-item__text strong {
+  font-weight: 800;
+  color: var(--gold-bright);
+}
+
+.info-sep {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--gold-deep), transparent);
+  flex: 0 0 auto;
+}
+@media (max-width: 430px) { .info-sep { display: none; } }
+
+/* =========================================================================
+   SLOGAN FINAL
+   ========================================================================= */
+.slogan {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  font-family: var(--script);
+  font-size: clamp(1.35rem, 6.5vw, 1.95rem);
+  line-height: 1.05;
+  color: var(--gold-bright);
+  text-shadow: 1.5px 1.5px 0 #000, 0 0 2px #000;
+  padding: 20px 6px 4px;
+}
+
+.slogan::before,
+.slogan::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  width: 40px; height: 40px;
+  background: radial-gradient(circle at 30% 30%, var(--gold), transparent 70%);
+  opacity: .5;
+  border-radius: 50%;
+}
+.slogan::before { left: 0; }
+.slogan::after  { right: 0; }
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media (min-width: 560px) {
+  .poster { padding: 40px 40px 54px; }
+  .script { font-size: 1.4rem; }
+  .emblem { width: 230px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+/* --- Separador de rombos entre filas --- */
+.rombos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 2px 0;
+}
+.rombos span {
+  width: 6px; height: 6px;
+  background: var(--gold-bright);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 1px #000;
+}
