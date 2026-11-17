@@ -4,6 +4,10 @@ Monorepo del sistema de restaurante. Cada carpeta es un **módulo** independient
 
 > ⚠️ **No renombres ni muevas `menu/` ni `la-avenida/`**: la URL de cada carpeta es la que va impresa en los QR.
 
+**En vivo** (GitHub Pages, se publica solo al hacer `git push` a `main`):
+- La Avenida: https://jeancarlost.github.io/FAPOZ/la-avenida/
+- Menú: https://jeancarlost.github.io/FAPOZ/menu/
+
 | Módulo | Estado | Descripción |
 |---|---|---|
 | `menu/` | ✅ listo (con datos de ejemplo) | Menú digital por QR (SPA sin backend) |
@@ -78,7 +82,7 @@ Cliente escanea QR → GitHub Pages (SPA) → getProducts() → CSV publicado de
 3. **Configura la fuente de datos** en `shared/config.js` → `SITE.dataSource.csvUrl`.
 4. Ajusta la marca en `menu/config.js` (`negocio.nombre`, `eslogan`, `logo`).
 5. **Sube el repo a GitHub** y activa **Settings → Pages → Deploy from a branch → main / root**.
-6. Tu menú queda en: `https://<usuario>.github.io/FAPOZ/menu/`
+6. Tu menú queda en: `https://<usuario>.github.io/FAPOZ/menu/` (ya hecho: ver **En vivo** arriba).
 7. **Genera el QR** apuntando a esa URL (QR Code Monkey, gratis, sin vencimiento). Imprímelo en acrílicos de mínimo 4×4 cm.
 
 ### Probar en local
@@ -111,10 +115,10 @@ Se edita desde Google Sheets en el celular, en su propia hoja (formato y puesta 
 
 ## Pendientes
 
-- [ ] **Control de versiones**: el proyecto no tiene `git`. Inicializar, subir a GitHub y activar Pages (paso 5 de "Puesta en marcha").
+- [x] **Control de versiones**: repo en https://github.com/JeanCarlosT/FAPOZ con GitHub Pages activo.
 - [ ] **Sheet real**: el Sheet publicado tiene los datos de ejemplo y 3 filas corridas una columna (`post-01`, `beb-01`, `beb-03`). Corregirlas o reimportar `docs/menu-sample.csv` (ya corregido) y cargar el menú real.
 - [ ] **Hoja de La Avenida**: el código ya la lee; falta crearla, publicarla y pegar la URL en `la-avenida/config.js` → `csvUrl` (ver `docs/sheet-template.md`).
-- [ ] **QR**: generar e imprimir cuando la URL de GitHub Pages esté activa.
+- [ ] **QR**: generar e imprimir apuntando a la URL **En vivo** de cada módulo.
 - [ ] **Íconos PWA en PNG** (192 y 512 px): iOS no usa SVG como `apple-touch-icon`.
 - [ ] `la-avenida/sw.js` nunca se registra (bien para un menú diario: evita mostrar el menú de ayer). Borrarlo si no se va a usar.
 
