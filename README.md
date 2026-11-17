@@ -50,7 +50,8 @@ node --test
 ## Pendientes
 
 - [x] Google Sheet de La Avenida creado, publicado y conectado en `la-avenida/config.js`.
-- [ ] Confirmar que el Sheet quedó compartido con el dueño como **Editor** y enviarle [docs/guia-cliente.md](docs/guia-cliente.md).
+- [x] Sheet compartido con el dueño como **Editor**.
+- [ ] Enviarle al dueño [docs/guia-cliente.md](docs/guia-cliente.md).
 - [ ] Confirmar con el cliente: precio de *Nachos con guacamole* (no tiene en el PDF) y "Carne de 270 g" en *Costilla BBQ* y *Pechuga* (la nota dice que solo churrasco, punta, solomito y cañón son 270 g).
 - [ ] **Dominio propio antes de imprimir acrílicos**: el QR apunta a `myadmon.github.io`; si un día cambia el hosting, los QR impresos se rompen. Con dominio propio, se cambia `url` en `config.js` y se regenera el QR.
 - [ ] Imprimir QR.
